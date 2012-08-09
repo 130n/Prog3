@@ -41,7 +41,7 @@ namespace Motor
 			//copy
 			Sprite(const Sprite& other):
 				sprite_bild(other.getSpriteBild()){}
-			// Sprite(const Sprite& other);
+			//tilldeln
 			const Sprite& operator=(const Sprite& other);
 			Image sprite_bild;
 			//position
