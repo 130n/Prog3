@@ -25,7 +25,7 @@ namespace Motor
             //SDL_Init måste vara laddad innan detta
             format =SDL_DisplayFormat(laddadBild);
         
-            SDL_FreeSurface(format);
+            SDL_FreeSurface(laddadBild);
 
             if(transparent)
             {
@@ -37,7 +37,7 @@ namespace Motor
         }
         else
         {
-            throw std::out_of_range("Fil saknas");
+            throw std::out_of_range("Fil saknas"+filename);
         }
 
     }
@@ -49,6 +49,8 @@ namespace Motor
     }
     SDL_Surface* Image::getBild() const
     {
+                std::cout << "getBild" <<std::endl;
+
         return bild;
     }
     //tilldelning

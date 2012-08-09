@@ -3,15 +3,21 @@
 
 namespace Motor
 {
-	/*draw tar en surface som argument så den vet
+	/*blit tar en surface som argument så den vet
 	* var den ska rita
 	*/
 	void Sprite::blit(SDL_Surface* destination_screen) const
 	{
+
 		SDL_Rect offset;
+
 		offset.x = getX();
 		offset.y = getY();
+
 		SDL_BlitSurface(getSpriteBild().getBild(), NULL, destination_screen, &offset);
+		///här pajjar det
+		std::cout << "blit4" <<std::endl;
+
 	}
 	//tilldeln
 	const Sprite& Sprite::operator=(const Sprite& other)

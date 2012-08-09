@@ -18,7 +18,8 @@ namespace Motor
 	        ); 
 	        ~GameEngine();
 	        void eventloop();
-	        // SDL_Surface* getScreen() const;
+	        void add(Motor::Sprite*);
+	        SDL_Surface* getScreen() const;
 	    private:
 	    	//extern?
 	    	SDL_Surface* screen;

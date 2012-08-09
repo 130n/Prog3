@@ -11,6 +11,8 @@ namespace Motor
 		public:
 			void blit(SDL_Surface*) const;
 			//virts
+			
+			virtual void draw(SDL_Surface*) const=0;
 			virtual ~Sprite(){}
 			virtual void tick(std::vector<Sprite*>)=0;
 			virtual void handleInput(SDL_Event& e) = 0;

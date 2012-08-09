@@ -1,12 +1,20 @@
 #include "Image.h"
 #include "GameEngine.h"
+#include "Avatar.h"
 #include <iostream>
-using namespace Motor;
+// using namespace Motor;
 
-GameEngine spel;// = GameEngine(60,100,100);
+Motor::GameEngine spel;// = GameEngine(60,100,100);
 
 int main(int argc, char* args[]){
-    // Sprite* test = new Sprite(0,0,0,0,"..test/hello.bmp",true);
-    // test->blit(spel.getScreen());
+    // Motor::Sprite* player = new Spel::Avatar(100,100);
+    Spel::Avatar* player = new Spel::Avatar(100,100);
+
+    std::cout << "main 1" <<std::endl;
+
+    // player->blit(spel.getScreen());
+    std::cout << "main 2 " <<std::endl;
+    spel.add(player);
+    spel.eventloop();
     return 0;
 }

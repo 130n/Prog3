@@ -13,20 +13,22 @@ namespace Motor
 			screen = SDL_SetVideoMode(WIDTH,HEIGHT,32, 
 				SDL_SWSURFACE || SDL_DOUBLEBUF);
 			running= true;
-
-			//för test
-			SDL_Delay(1000);
 		}
 	}
 
-	// SDL_Surface* GameEngine::getScreen() const
-	// {
-	// 	return screen;
-	// }
+	void GameEngine::add(Sprite* s)
+	{
+		vsprites.push_back(s);
+	}
+
+	SDL_Surface* GameEngine::getScreen() const
+	{
+		return screen;
+	}
 
 	GameEngine::~GameEngine()
 	{
-		for(int i=0; i<vsprites.size(); i++)
+		for(unsigned int i=0; i<vsprites.size(); i++)
 		{
 			delete vsprites[i];
 		}
@@ -35,12 +37,17 @@ namespace Motor
 
 	void GameEngine::eventloop()
 	{
+	    std::cout << "start" <<std::endl;
+
 		int time_delay;
 		SDL_Event event;
 		while(running)
 		{
+		    std::cout << "mainloop" <<std::endl;
+
 			while(SDL_PollEvent(&event))
 			{
+				std::cout << "eventloop" <<std::endl;
 				if(event.type == SDL_QUIT)
 				{
 					running = false;
@@ -77,10 +84,33 @@ namespace Motor
 
 				}
 			}
+			/*
+			* tickloop
+			*/
+			for (unsigned int i = 0; i < vsprites.size(); ++i)
+			{
+				std::cout << "tick" <<std::endl;
+				vsprites[i]->tick(vsprites);
+			}
+
+			Uint32 screenBG = SDL_MapRGB(getScreen()->format,0,0,0);
+			SDL_FillRect(getScreen(),NULL,screenBG);
+
+			/*
+			* blitloop
+			*/
+			for (unsigned int i = 0; i < vsprites.size(); ++i)
+			{
+				std::cout << "blit" <<std::endl;
+				vsprites[i]->blit(getScreen());
+				// vsprites[i]->draw(getScreen());
+			}
+
+			SDL_Flip(getScreen());
 
 			//filler
-			if(time_delay)
-				SDL_Delay(time_delay);
+			// if(time_delay)
+			// 	SDL_Delay(time_delay);
 		}
 
 	}
