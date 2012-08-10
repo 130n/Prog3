@@ -28,7 +28,7 @@ namespace Motor
 
 	GameEngine::~GameEngine()
 	{
-		for(unsigned int i=0; i<vsprites.size(); i++)
+		for(unsigned int i=0; i<vsprites.size(); ++i)
 		{
 			delete vsprites[i];
 		}
@@ -37,22 +37,17 @@ namespace Motor
 
 	void GameEngine::eventloop()
 	{
-	    std::cout << "start" <<std::endl;
-
 		int time_delay;
 		SDL_Event event;
 		while(running)
 		{
-		    std::cout << "mainloop" <<std::endl;
-
 			while(SDL_PollEvent(&event))
 			{
-				std::cout << "eventloop" <<std::endl;
 				if(event.type == SDL_QUIT)
 				{
 					running = false;
 				}
-				if(event.type==SDL_KEYDOWN)
+				else if(event.type==SDL_KEYDOWN)
 				{
 					switch(event.key.keysym.sym)
 					{
@@ -62,22 +57,26 @@ namespace Motor
 						case SDLK_q:
 							running = false;
 							break;
-						case SDLK_UP:
-							//something
-							break;
-						case SDLK_DOWN:
-							//something else
-							break;
-						case SDLK_LEFT:
-							//something
-							break;
-						case SDLK_RIGHT:
-							//something else
-							break;
-						case SDLK_SPACE:
-							//skjut?
-							break;
+						// case SDLK_UP:
+						// 	//something
+						// 	break;
+						// case SDLK_DOWN:
+						// 	//something else
+						// 	break;
+						// case SDLK_LEFT:
+						// 	//something
+						// 	break;
+						// case SDLK_RIGHT:
+						// 	//something else
+						// 	break;
+						// case SDLK_SPACE:
+						// 	//skjut?
+						// 	break;
 					}
+				}
+				for (unsigned int i = 0; i < vsprites.size(); ++i)
+				{
+					vsprites[i]->handleInput(event);
 				}
 				if(event.type == SDL_MOUSEMOTION)
 				{
@@ -89,7 +88,6 @@ namespace Motor
 			*/
 			for (unsigned int i = 0; i < vsprites.size(); ++i)
 			{
-				std::cout << "tick" <<std::endl;
 				vsprites[i]->tick(vsprites);
 			}
 
@@ -101,7 +99,6 @@ namespace Motor
 			*/
 			for (unsigned int i = 0; i < vsprites.size(); ++i)
 			{
-				std::cout << "blit" <<std::endl;
 				vsprites[i]->blit(getScreen());
 				// vsprites[i]->draw(getScreen());
 			}

@@ -49,8 +49,6 @@ namespace Motor
     }
     SDL_Surface* Image::getBild() const
     {
-                std::cout << "getBild" <<std::endl;
-
         return bild;
     }
     //tilldelning

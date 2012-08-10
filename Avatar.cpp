@@ -8,6 +8,8 @@ namespace Spel{
 	Sprite(x, y, 0, 0, img_path, true)
 	{
 		lives = 3;
+		width = getSpriteBild().getBild()->w;
+		height = getSpriteBild().getBild()->h;
 	}
 	void Avatar::draw(SDL_Surface* screen) const
 	{
@@ -21,8 +23,12 @@ namespace Spel{
 	{
 
 	}
-	void Avatar::handleInput(SDL_Event&){
-
+	void Avatar::handleInput(SDL_Event& e){
+		if (e.type == SDL_MOUSEMOTION)
+		{
+			setX(e.motion.x-width/2);
+			setY(e.motion.y-height/2);
+		}
 	}
 	void Avatar::collisionCheck(std::vector<Sprite*>)
 	{

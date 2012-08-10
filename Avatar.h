@@ -11,7 +11,7 @@ namespace Spel
 	class Avatar : public Motor::Sprite
 	{
 		public:
-			Avatar(int x, int y, std::string img_path="smiley1.png");
+			Avatar(int x, int y, std::string img_path="smiley2.jpg");
 			// ~Avatar(){
 			// 	// delete getSpriteBild();
 			// };
@@ -22,6 +22,8 @@ namespace Spel
 			void collisionCheck(std::vector<Sprite*>);
 		private:
 			int lives;
+			int width;
+			int height;
 	};
 }
 

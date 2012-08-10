@@ -15,9 +15,6 @@ namespace Motor
 		offset.y = getY();
 
 		SDL_BlitSurface(getSpriteBild().getBild(), NULL, destination_screen, &offset);
-		///här pajjar det
-		std::cout << "blit4" <<std::endl;
-
 	}
 	//tilldeln
 	const Sprite& Sprite::operator=(const Sprite& other)
