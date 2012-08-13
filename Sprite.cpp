@@ -3,6 +3,24 @@
 
 namespace Motor
 {
+	Sprite::Sprite(int x, int y, int sX, int sY, std::string imgpath, bool transp): 
+				x(x), 
+				y(y), 
+				xVel(sX), 
+				yVel(sY), 
+				sprite_bild(imgpath, transp)
+				{
+					width=sprite_bild.getBild()->w;
+					height=sprite_bild.getBild()->h;
+				}
+	int Sprite::getHeight()
+	{
+		return height;
+	}
+	int Sprite::getWidth()
+	{
+		return width;
+	}
 	/*blit tar en surface som argument så den vet
 	* var den ska rita
 	*/

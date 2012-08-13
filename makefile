@@ -5,5 +5,5 @@
 #
 
 all: 
-	g++ `sdl-config --cflags --libs` Image.cpp Sprite.cpp GameEngine.cpp Avatar.cpp main.cpp -lSDL -lSDL_image -o thegame
+	g++ `sdl-config --cflags --libs` Image.cpp Sprite.cpp GameEngine.cpp Protagonist.cpp Antagonist.cpp main.cpp -lSDL -lSDL_image -o thegame
 	./thegame

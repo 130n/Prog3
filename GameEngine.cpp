@@ -38,9 +38,14 @@ namespace Motor
 	void GameEngine::eventloop()
 	{
 		int time_delay;
+		int TIMEFRAME = 1000/FPS;
 		SDL_Event event;
+		Uint32 time_left;
 		while(running)
 		{
+			//startar 
+			time_left=SDL_GetTicks()+TIMEFRAME;
+
 			while(SDL_PollEvent(&event))
 			{
 				if(event.type == SDL_QUIT)
@@ -105,8 +110,12 @@ namespace Motor
 
 			SDL_Flip(getScreen());
 
-			//filler
-			// if(time_delay)
+			//delay
+			time_delay = time_left - SDL_GetTicks();
+			if( 0 < time_delay)
+			{
+				SDL_Delay(time_delay);
+			}
 			// 	SDL_Delay(time_delay);
 		}
 

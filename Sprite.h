@@ -12,7 +12,7 @@ namespace Motor
 			void blit(SDL_Surface*) const;
 			//virts
 			
-			virtual void draw(SDL_Surface*) const=0;
+			// virtual void draw(SDL_Surface*) const=0;
 			virtual ~Sprite(){}
 			virtual void tick(std::vector<Sprite*>)=0;
 			virtual void handleInput(SDL_Event& e) = 0;
@@ -28,17 +28,10 @@ namespace Motor
 			void setY(int y);
 			void setXvel(float x);
 			void setYvel(float y);
-
+			int getHeight();
+			int getWidth();
 		protected:
-			Sprite(int x, int y, int sX, int sY, std::string imgpath, bool transp): 
-				x(x), 
-				y(y), 
-				xVel(sX), 
-				yVel(sY), 
-				sprite_bild(imgpath, transp)
-				{
-					//TOMT
-				}
+			Sprite(int x, int y, int sX, int sY, std::string imgpath, bool transp);
 		private:
 			//copy
 			Sprite(const Sprite& other):
@@ -52,6 +45,8 @@ namespace Motor
 			//rörelse
 			float xVel;
 			float yVel;
+			int width;
+			int height;
 	};
 }
 
