@@ -26,6 +26,17 @@ namespace Motor
 		return screen;
 	}
 
+
+    int GameEngine::getWidth()
+    {
+    	return WIDTH;
+    }
+
+    int GameEngine::getHeight()
+    {
+    	return HEIGHT;
+    }
+
 	GameEngine::~GameEngine()
 	{
 		for(unsigned int i=0; i<vsprites.size(); ++i)
@@ -62,21 +73,6 @@ namespace Motor
 						case SDLK_q:
 							running = false;
 							break;
-						// case SDLK_UP:
-						// 	//something
-						// 	break;
-						// case SDLK_DOWN:
-						// 	//something else
-						// 	break;
-						// case SDLK_LEFT:
-						// 	//something
-						// 	break;
-						// case SDLK_RIGHT:
-						// 	//something else
-						// 	break;
-						// case SDLK_SPACE:
-						// 	//skjut?
-						// 	break;
 					}
 				}
 				for (unsigned int i = 0; i < vsprites.size(); ++i)
@@ -112,11 +108,11 @@ namespace Motor
 
 			//delay
 			time_delay = time_left - SDL_GetTicks();
+			std::cout<<SDL_GetTicks()<<std::endl;
 			if( 0 < time_delay)
 			{
 				SDL_Delay(time_delay);
 			}
-			// 	SDL_Delay(time_delay);
 		}
 
 	}

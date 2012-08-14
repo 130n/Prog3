@@ -2,6 +2,7 @@
 #define PROTAGONIST_H
 
 #include "Sprite.h"
+#include "Constants.h"
 #include <string>
 #include <vector>
 
@@ -11,12 +12,7 @@ namespace Spel
 	class Protagonist : public Motor::Sprite
 	{
 		public:
-			Protagonist(int x, int y, std::string img_path="smiley2.bmp");
-			// ~Protagonist(){
-			// 	// delete getSpriteBild();
-			// };
-			// void draw(SDL_Surface*) const;
-
+			Protagonist(int x, int y, std::string img_path="smiley.bmp");
 			void tick(std::vector<Sprite*>);
 			void handleInput(SDL_Event&);
 			void collisionCheck(std::vector<Sprite*>);

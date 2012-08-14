@@ -4,7 +4,8 @@
 #include "Antagonist.h"
 #include <iostream>
 
-Motor::GameEngine spel;// = GameEngine(60,100,100);
+
+    Motor::GameEngine spel;// = GameEngine(60,100,100);
 
 int main(int argc, char* args[]){
     // Motor::Sprite* player = new Spel::Protagonist(100,100);

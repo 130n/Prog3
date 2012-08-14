@@ -12,7 +12,7 @@ namespace Spel{
 
 	void Protagonist::tick(std::vector<Sprite*>)
 	{
-
+		//tom
 	}
 	void Protagonist::handleInput(SDL_Event& e){
 		if (e.type == SDL_MOUSEMOTION)

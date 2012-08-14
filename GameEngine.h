@@ -2,6 +2,7 @@
 #define GAMEENGINE_H
 #include "SDL.h"
 #include "Sprite.h"
+#include "Constants.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -12,14 +13,16 @@ namespace Motor
 	    public:
 	        GameEngine
 	        (
-	        	int fps = 60, 
-	        	int width = 640, 
-	        	int height = 480
+	        	int fps = FRAMES_PER_SECOND, 
+	        	int width = SCREEN_WIDTH, 
+	        	int height = SCREEN_HEIGHT
 	        ); 
 	        ~GameEngine();
 	        void eventloop();
 	        void add(Motor::Sprite*);
 	        SDL_Surface* getScreen() const;
+	        int getWidth();
+	        int getHeight();
 	    private:
 	    	//extern?
 	    	SDL_Surface* screen;

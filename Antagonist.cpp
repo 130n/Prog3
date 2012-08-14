@@ -1,4 +1,6 @@
 #include "Antagonist.h"
+#include "GameEngine.h"
+
 
 namespace Spel
 {
@@ -11,9 +13,21 @@ namespace Spel
 	{
 
 	}
-	void Antagonist::tick(std::vector<Sprite*> vsprites){
-		setX(getX()+getXvel());
-		setY(getY()+getXvel());
+	void Antagonist::tick(std::vector<Sprite*> vsprites)
+	{
+		if (getX()<0 || (getX()+getWidth()) >= SCREEN_WIDTH)
+		{
+			std::cout << getWidth() <<" "<<getX()<< std::endl;
+			setXvel(-getXvel());
+		}
+
+		if (getY()<0 || ((getY()+getHeight()) >= SCREEN_HEIGHT))
+		{
+			std::cout << getHeight() <<" "<<getY()<< std::endl;
+			setYvel(-getYvel());
+		}
+			setX(getX()+getXvel());
+			setY(getY()+getYvel());
 	}
 	void Antagonist::handleInput(SDL_Event& e)
 	{
