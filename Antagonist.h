@@ -16,8 +16,9 @@ namespace Spel
 			void tick(std::vector<Sprite*>);
 			void handleInput(SDL_Event&);
 		//kanske
-			void collisionCheck(std::vector<Sprite*>);
+			bool collisionCheck(std::vector<Sprite*>);
 		private:
+			int summoningSickness;
 	};
 }
 

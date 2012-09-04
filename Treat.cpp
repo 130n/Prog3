@@ -1,44 +1,28 @@
-#include "Antagonist.h"
+#include "Treat.h"
 #include "Protagonist.h"
-#include "GameEngine.h"
-
-
-namespace Spel
-{
-
-	Antagonist::Antagonist(int x, int y, std::string img): Sprite(x, y, 0, 0, img, true)
+namespace Spel{
+	void Treat::tick(std::vector<Sprite*> vsprites)
 	{
-		summoningSickness = 60;
+		--fuse;
+		if(fuse<=0)
+		{
+			fuse=180;
+			teleport();
+		}
 	}
-
-	void Antagonist::tick(std::vector<Sprite*> vsprites)
+	void Treat::teleport()
 	{
-		--summoningSickness;
-		if (summoningSickness == 0)
-		{
-			setXvel(2);
-			setYvel(2);
-		}
-		//ändra riktning
-		if (getX()<0 || (getX()+getWidth()) >= SCREEN_WIDTH)
-		{
-			setXvel(-getXvel());
-		}
-
-		if (getY()<0 || ((getY()+getHeight()) >= SCREEN_HEIGHT))
-		{
-			setYvel(-getYvel());
-		}
-		//flytta
-		setX(getX()+getXvel());
-		setY(getY()+getYvel());
+		fuse = 180;
+		int new_x = rand()%(SCREEN_WIDTH - getWidth());
+			int new_y = rand()%(SCREEN_HEIGHT - getHeight());
+			setX(new_x);
+			setY(new_y);	
 	}
-	void Antagonist::handleInput(SDL_Event& e)
+	void Treat::handleInput(SDL_Event& e)
 	{
-		//tom
-	}
 
-	bool Antagonist::collisionCheck(std::vector<Sprite*> vsprites)
+	}
+	bool Treat::collisionCheck(std::vector<Sprite*> vsprites)
 	{
 		int top = getY();
 		int bottom = getY()+getHeight();
@@ -73,9 +57,14 @@ namespace Spel
 					continue;
 				}
 					/*
-					* ANNARS ÄR ÖVERLAPPAR DE
+					* flytta äpplet
 					*/
-				return true;
+					teleport();
+					/*
+					returnerar false då allt som ska göras görs här
+					undviker att stoppa spelet i game engine
+					*/
+				return false;
 			}
 			else
 			{

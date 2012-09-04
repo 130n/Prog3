@@ -66,7 +66,6 @@ namespace Motor
     //destruktor
     Image::~Image()
     {
-        std::cout<<bild->refcount<<"d"<<std::endl;
         if(bild)
         {
             SDL_FreeSurface(bild);

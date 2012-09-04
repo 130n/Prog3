@@ -10,6 +10,9 @@ namespace Motor
 {
     class GameEngine
     {
+    	//funktionspekare
+    	typedef void (*Func)();
+	    
 	    public:
 	        GameEngine
 	        (
@@ -18,19 +21,24 @@ namespace Motor
 	        	int height = SCREEN_HEIGHT
 	        ); 
 	        ~GameEngine();
+
+	        void addAction(Func action); 
 	        void eventloop();
 	        void add(Motor::Sprite*);
 	        SDL_Surface* getScreen() const;
 	        int getWidth();
 	        int getHeight();
 	    private:
-	    	//extern?
+	    	//vector med funktioner tillagda med addAction
+	        std::vector<Func> vactions;
+	        //vector med sprites
+	        std::vector<Sprite*> vsprites;
+	        //fönstret
 	    	SDL_Surface* screen;
 	    	bool running;
 	        const int FPS;
 	        const int WIDTH;
 	        const int HEIGHT;
-	        std::vector<Sprite*> vsprites;
     };
 
 }

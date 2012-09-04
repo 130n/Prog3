@@ -13,11 +13,17 @@ namespace Spel
 	{
 		public:
 			Protagonist(int x, int y, std::string img_path="smiley.bmp");
+			~Protagonist()
+			{
+				std::cout << "      SCORE: " << score << std::endl;
+			}
 			void tick(std::vector<Sprite*>);
 			void handleInput(SDL_Event&);
-			void collisionCheck(std::vector<Sprite*>);
+			bool collisionCheck(std::vector<Sprite*>);
+			int getScore();
+			void scorePP();
 		private:
-			int lives;
+			int score;
 	};
 }
 
